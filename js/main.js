@@ -1,4 +1,4 @@
-// 1. Render Katalog Produk
+// 1. Render Katalog Produ
 function renderCatalog(filterValue) {
     const grid = document.getElementById('catalog-grid');
     grid.innerHTML = ''; 
