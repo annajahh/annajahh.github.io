@@ -1,0 +1,48 @@
+body { background-color: #FFFCFA; }
+
+/* Global Ambient Background */
+.ambient-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
+.blob-1 { position: absolute; top: -10%; right: -5%; width: 50vw; height: 50vw; min-width: 400px; min-height: 400px; background: radial-gradient(circle, rgba(245,61,61,0.1) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; filter: blur(40px); }
+.blob-2 { position: absolute; top: 30%; left: -10%; width: 60vw; height: 60vw; min-width: 500px; min-height: 500px; background: radial-gradient(circle, rgba(176,30,30,0.08) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; filter: blur(50px); }
+
+/* Smooth Page Transition */
+.page-enter { animation: fadeUpSmooth 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+@keyframes fadeUpSmooth {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Glass Effects */
+.glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(24px) saturate(200%); -webkit-backdrop-filter: blur(24px) saturate(200%); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 10px 40px -10px rgba(176, 30, 30, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1); }
+.glass-header { background: rgba(255, 252, 250, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(176, 30, 30, 0.08); }
+
+/* Smooth Modal Pop-up */
+.modal-enter { animation: modalPopSpring 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards; }
+.modal-leave { animation: modalPopOut 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+@keyframes modalPopSpring {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes modalPopOut {
+    from { opacity: 1; transform: scale(1) translateY(0); }
+    to { opacity: 0; transform: scale(0.95) translateY(15px); }
+}
+
+/* Filter Button Active State */
+.filter-btn.active {
+    background-color: #b01e1e;
+    color: white;
+    border-color: #b01e1e;
+    box-shadow: 0 4px 15px rgba(176,30,30,0.3);
+}
+
+/* Custom Scrollbars */
+.custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #b01e1e; }

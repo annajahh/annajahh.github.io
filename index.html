@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko An Najah - Seragam Sekolah & Kantor Sragen</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#fff1f1',
+                            100: '#ffdfdf',
+                            200: '#ffc5c5',
+                            300: '#ff9d9d',
+                            400: '#ff6464',
+                            500: '#f53d3d', 
+                            600: '#e32626',
+                            700: '#b01e1e',
+                            800: '#931b1b',
+                            900: '#4a0f0f',
+                        },
+                        warmbg: '#FFFCFA',
+                        stone: {
+                            800: '#292524',
+                            900: '#1c1917',
+                        }
+                    },
+                    transitionTimingFunction: {
+                        'smooth': 'cubic-bezier(0.25, 1, 0.5, 1)', 
+                        'spring': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-stone-800 flex flex-col min-h-screen">
+
+    <div class="ambient-bg"><div class="blob-1"></div><div class="blob-2"></div></div>
+
+    <header class="fixed top-0 w-full z-40 glass-header transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-[72px]">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group" onclick="navigate('beranda')">
+                    <div class="w-10 h-10 rounded-full border border-primary-200 flex items-center justify-center bg-white shadow-sm transition-transform duration-500 group-hover:scale-105">
+                        <span class="font-serif font-bold text-primary-700 text-lg">RF</span>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h1 class="font-serif text-xl font-bold text-stone-900 tracking-tight leading-none">Toko An Najah</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://wa.me/6281215094446" target="_blank" class="hidden md:flex items-center gap-2 text-sm text-stone-600 hover:text-green-600 font-medium transition-colors">
+                        <i class="fab fa-whatsapp text-lg text-green-500"></i> Hubungi Kami
+                    </a>
+                    <button id="header-menu-btn" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-stone-600 hover:bg-primary-50 hover:text-primary-700 transition-colors focus:outline-none border border-stone-200 shadow-sm">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="header-dropdown" class="hidden absolute w-full bg-white border-b border-primary-100 shadow-xl origin-top transition-all">
+            <div class="max-w-7xl mx-auto px-4 py-6">
+                <p class="text-xs font-bold text-primary-700 uppercase tracking-widest mb-4">Akses Cepat WhatsApp</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a href="https://wa.me/6281215094446" target="_blank" class="flex items-center gap-3 p-4 rounded-2xl bg-stone-50 hover:bg-green-50 border border-stone-100 transition-colors group duration-300">
+                        <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-green-500 group-hover:bg-green-500 group-hover:text-white transition-colors duration-300"><i class="fab fa-whatsapp text-2xl"></i></div>
+                        <div><p class="font-bold text-stone-800">Cabang Wisma</p><p class="text-xs text-stone-500">Jalan Cemara Gg.5</p></div>
+                    </a>
+                    <a href="https://wa.me/6285799587017" target="_blank" class="flex items-center gap-3 p-4 rounded-2xl bg-stone-50 hover:bg-green-50 border border-stone-100 transition-colors group duration-300">
+                        <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-green-500 group-hover:bg-green-500 group-hover:text-white transition-colors duration-300"><i class="fab fa-whatsapp text-2xl"></i></div>
+                        <div><p class="font-bold text-stone-800">Cabang Kios</p><p class="text-xs text-stone-500">Shopping Center Sragen</p></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-40">
+        <div class="glass-nav rounded-full px-2 py-2 flex items-center justify-center gap-1 sm:gap-2">
+            <button onclick="navigate('beranda')" class="nav-item group relative flex items-center justify-center h-12 w-[3rem] sm:w-12 rounded-full transition-all duration-300 ease-smooth" data-target="beranda" title="Beranda">
+                <i class="fas fa-home text-lg sm:text-xl relative z-10 transition-colors duration-300"></i>
+                <div class="nav-bg absolute inset-0 bg-gradient-to-tr from-primary-700 to-primary-500 rounded-full scale-0 opacity-0 transition-all duration-300 ease-smooth shadow-lg"></div>
+            </button>
+            <button onclick="navigate('layanan')" class="nav-item group relative flex items-center justify-center h-12 w-[3rem] sm:w-12 rounded-full transition-all duration-300 ease-smooth" data-target="layanan" title="Layanan Kami">
+                <i class="fas fa-shapes text-lg sm:text-xl relative z-10 transition-colors duration-300"></i>
+                <div class="nav-bg absolute inset-0 bg-gradient-to-tr from-primary-700 to-primary-500 rounded-full scale-0 opacity-0 transition-all duration-300 ease-smooth shadow-lg"></div>
+            </button>
+            <button onclick="navigate('katalog')" class="nav-item group relative flex items-center justify-center h-12 w-[3rem] sm:w-12 rounded-full transition-all duration-300 ease-smooth" data-target="katalog" title="Katalog Produk">
+                <i class="fas fa-tshirt text-lg sm:text-xl relative z-10 transition-colors duration-300"></i>
+                <div class="nav-bg absolute inset-0 bg-gradient-to-tr from-primary-700 to-primary-500 rounded-full scale-0 opacity-0 transition-all duration-300 ease-smooth shadow-lg"></div>
+            </button>
+            <button onclick="navigate('tentang')" class="nav-item group relative flex items-center justify-center h-12 w-[3rem] sm:w-12 rounded-full transition-all duration-300 ease-smooth" data-target="tentang" title="Tentang Kami">
+                <i class="fas fa-store text-lg sm:text-xl relative z-10 transition-colors duration-300"></i>
+                <div class="nav-bg absolute inset-0 bg-gradient-to-tr from-primary-700 to-primary-500 rounded-full scale-0 opacity-0 transition-all duration-300 ease-smooth shadow-lg"></div>
+            </button>
+            <button onclick="navigate('lokasi')" class="nav-item group relative flex items-center justify-center h-12 w-[3rem] sm:w-12 rounded-full transition-all duration-300 ease-smooth" data-target="lokasi" title="Lokasi">
+                <i class="fas fa-map-marker-alt text-lg sm:text-xl relative z-10 transition-colors duration-300"></i>
+                <div class="nav-bg absolute inset-0 bg-gradient-to-tr from-primary-700 to-primary-500 rounded-full scale-0 opacity-0 transition-all duration-300 ease-smooth shadow-lg"></div>
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex-grow relative z-10">
+        <section id="page-beranda" class="page-content min-h-screen flex items-center pt-[110px] pb-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-3 py-2 px-5 rounded-full bg-white/80 backdrop-blur-md border border-primary-100 shadow-sm mb-6 mt-2">
+                            <span class="flex h-3 w-3 relative">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-3 w-3 bg-primary-600"></span>
+                            </span>
+                            <span class="text-sm font-semibold text-primary-900 tracking-wide">Pusat Seragam & Konfeksi Sragen</span>
+                        </div>
+                        
+                        <h2 class="font-serif text-5xl sm:text-6xl lg:text-[72px] font-bold text-stone-900 leading-[1.1] mb-6 drop-shadow-sm">
+                            Pakaian <br class="hidden lg:block"><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-700 via-primary-500 to-orange-500">Seragam</span> Terbaik.
+                        </h2>
+                        <p class="text-lg text-stone-600 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                            Toko An Najah memproduksi seragam sekolah & kantor dengan standar jahitan berkualitas, bahan yang nyaman dikenakan, dan layanan profesional terpercaya.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button onclick="navigate('katalog')" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-sm font-semibold rounded-2xl shadow-[0_8px_25px_rgba(176,30,30,0.3)] text-white bg-gradient-to-r from-primary-700 to-primary-500 hover:from-primary-800 hover:to-primary-600 transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(176,30,30,0.4)]">
+                                Lihat Katalog
+                            </button>
+                            <button onclick="navigate('lokasi')" class="inline-flex items-center justify-center px-8 py-4 border border-stone-200 text-sm font-semibold rounded-2xl text-stone-800 bg-white hover:bg-stone-50 hover:border-primary-300 transition-all duration-500 ease-smooth shadow-sm hover:-translate-y-1">
+                                Lokasi Toko
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2 relative w-full px-4 sm:px-0 mt-8 lg:mt-0">
+                        <div class="relative rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(176,30,30,0.15)] border-8 border-white bg-white group">
+                            <img src="img/produksi.png" alt="Produksi Seragam" class="w-full h-[450px] object-cover scale-105 transition-transform duration-[1.5s] ease-out group-hover:scale-100">
+                            <div class="absolute top-6 right-6 z-20 bg-white/95 backdrop-blur-md px-4 py-2 rounded-xl flex items-center gap-2 border border-white/50 shadow-lg">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="font-bold text-stone-800 text-xs uppercase tracking-wide">Best Quality</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full bg-white/95 backdrop-blur-md p-5 z-20 border-t border-white/50">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-bold text-stone-900 text-lg leading-none mb-1">Menerima Pesanan Konfeksi</p>
+                                        <p class="text-sm text-primary-700 font-semibold">Partai Besar & Satuan</p>
+                                    </div>
+                                    <div class="w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center shadow-inner border border-primary-100">
+                                        <i class="fas fa-check text-primary-600 text-xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-layanan" class="page-content hidden pt-[110px] pb-10 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
+                    <div class="max-w-2xl">
+                        <span class="text-primary-600 font-bold tracking-wider uppercase text-sm mb-2 block">Layanan Kami</span>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-stone-900 mb-4">Solusi Kebutuhan Anda</h2>
+                        <p class="text-stone-600 text-lg">Melayani pembuatan seragam dengan jaminan kualitas jahitan rapi dan tepat waktu.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-[2rem] p-4 shadow-sm border border-stone-100 transition-all duration-500 ease-smooth hover:shadow-xl hover:-translate-y-2 group cursor-pointer" onclick="navigate('katalog')">
+                        <div class="h-56 rounded-3xl overflow-hidden relative mb-5 border border-stone-100">
+                            <img src="img/layanan-sekolah.png" alt="Seragam Sekolah" class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-110">
+                        </div>
+                        <div class="px-4 pb-2">
+                            <h4 class="text-xl font-bold text-stone-900 mb-2">Seragam Sekolah</h4>
+                            <p class="text-stone-500 text-sm leading-relaxed">Lengkap Setelan SD, SMP, SMA. Bahan pilihan standar dinas pendidikan.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-[2rem] p-4 shadow-sm border border-stone-100 transition-all duration-500 ease-smooth hover:shadow-xl hover:-translate-y-2 group cursor-pointer" onclick="navigate('katalog')">
+                        <div class="h-56 rounded-3xl overflow-hidden relative mb-5 border border-stone-100">
+                            <img src="img/layanan-kantor.png" alt="Seragam Kantor" class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-110">
+                        </div>
+                        <div class="px-4 pb-2">
+                            <h4 class="text-xl font-bold text-stone-900 mb-2">Pakaian Dinas & Kantor</h4>
+                            <p class="text-stone-500 text-sm leading-relaxed">Kemeja kerja PDH/PDL, dan jas almamater. Memberikan kesan profesional.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-[2rem] p-4 shadow-sm border border-stone-100 transition-all duration-500 ease-smooth hover:shadow-xl hover:-translate-y-2 group cursor-pointer" onclick="navigate('katalog')">
+                        <div class="h-56 rounded-3xl overflow-hidden relative mb-5 border border-stone-100">
+                            <img src="img/layanan-konfeksi.png" alt="Konfeksi" class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-110">
+                        </div>
+                        <div class="px-4 pb-2">
+                            <h4 class="text-xl font-bold text-stone-900 mb-2">Jasa Konfeksi</h4>
+                            <p class="text-stone-500 text-sm leading-relaxed">Produksi partai besar (grosir) maupun pesanan custom/bordir komunitas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-katalog" class="page-content hidden pt-[110px] pb-10 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-8">
+                    <span class="text-primary-600 font-bold tracking-wider uppercase text-sm mb-2 block">Pilih Kategori</span>
+                    <h2 class="font-serif text-4xl font-bold text-stone-900 mb-4">Katalog Produk</h2>
+                    <p class="text-stone-600">Klik produk untuk melihat <strong class="text-primary-700">Detail & Panduan Ukuran Lengkap</strong>.</p>
+                </div>
+
+                <div class="flex flex-wrap gap-2 md:gap-3 mb-10 overflow-x-auto pb-2 custom-scrollbar">
+                    <button class="filter-btn active px-5 py-2.5 rounded-full border border-stone-200 text-sm font-semibold text-stone-600 hover:border-primary-500 transition-all whitespace-nowrap" data-filter="semua">Semua Produk</button>
+                    <button class="filter-btn px-5 py-2.5 rounded-full border border-stone-200 text-sm font-semibold text-stone-600 hover:border-primary-500 transition-all whitespace-nowrap" data-filter="sd">Seragam SD</button>
+                    <button class="filter-btn px-5 py-2.5 rounded-full border border-stone-200 text-sm font-semibold text-stone-600 hover:border-primary-500 transition-all whitespace-nowrap" data-filter="smp">Seragam SMP</button>
+                    <button class="filter-btn px-5 py-2.5 rounded-full border border-stone-200 text-sm font-semibold text-stone-600 hover:border-primary-500 transition-all whitespace-nowrap" data-filter="sma">Seragam SMA</button>
+                    <button class="filter-btn px-5 py-2.5 rounded-full border border-stone-200 text-sm font-semibold text-stone-600 hover:border-primary-500 transition-all whitespace-nowrap" data-filter="kantor">Kantor / PDH</button>
+                    <button class="filter-btn px-5 py-2.5 rounded-full border border-stone-200 text-sm font-semibold text-stone-600 hover:border-primary-500 transition-all whitespace-nowrap" data-filter="aksesoris">Aksesoris</button>
+                </div>
+
+                <div id="catalog-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                </div>
+            </div>
+        </section>
+
+        <section id="page-tentang" class="page-content hidden pt-[110px] pb-10 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-[3rem] p-8 md:p-12 shadow-md border border-primary-100 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mr-32 -mt-32 w-96 h-96 rounded-full bg-primary-100/50 blur-[60px]"></div>
+                    <div class="grid md:grid-cols-2 gap-12 items-center relative z-10">
+                        <div class="order-2 md:order-1 text-center md:text-left">
+                            <div class="inline-block py-1.5 px-4 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest mb-6">Profil Kami</div>
+                            <h2 class="font-serif text-4xl md:text-5xl font-bold text-stone-900 mb-6">Dedikasi<br><span class="text-primary-700">Toko An Najah</span></h2>
+                            <p class="text-stone-600 mb-4 leading-relaxed text-lg">"Best Quality, Trusted Service" bukan sekadar motto, melainkan standar yang kami terapkan.</p>
+                            <p class="text-stone-500 mb-8 leading-relaxed">Berlokasi di Sragen, An Najah (Revanfa Jaya) hadir sebagai mitra terbaik sekolah, perusahaan, dan instansi untuk menghadirkan seragam yang membanggakan pemakainya.</p>
+                            <div class="grid grid-cols-2 gap-4 w-full">
+                                <div class="bg-stone-50 rounded-2xl p-4 border border-stone-100 text-center md:text-left">
+                                    <i class="fas fa-medal text-2xl text-yellow-500 mb-2"></i>
+                                    <h4 class="text-stone-900 font-bold text-lg mb-1">Premium</h4>
+                                    <p class="text-stone-500 text-xs">Material & Jahitan</p>
+                                </div>
+                                <div class="bg-stone-50 rounded-2xl p-4 border border-stone-100 text-center md:text-left">
+                                    <i class="fas fa-handshake text-2xl text-primary-500 mb-2"></i>
+                                    <h4 class="text-stone-900 font-bold text-lg mb-1">100%</h4>
+                                    <p class="text-stone-500 text-xs">Terpercaya</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <div class="relative w-full aspect-[4/5] md:aspect-square rounded-[2rem] overflow-hidden shadow-lg border-4 border-white">
+                                <img src="img/detail-jahitan.png" alt="Detail Jahitan" class="w-full h-full object-cover">
+                                <div class="absolute bottom-6 left-6">
+                                    <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center text-primary-700 text-2xl font-serif shadow-lg border border-primary-100">RF</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-lokasi" class="page-content hidden pt-[110px] pb-10 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-10 text-center md:text-left">
+                    <span class="text-primary-600 font-bold tracking-wider uppercase text-sm mb-2 block">Lokasi & Kontak</span>
+                    <h2 class="font-serif text-4xl font-bold text-stone-900 mb-2">Temukan Toko Kami</h2>
+                    <p class="text-stone-600">Kunjungi 2 cabang resmi kami di Sragen.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-[2rem] overflow-hidden border border-stone-200 flex flex-col shadow-sm transition-transform duration-500 hover:-translate-y-1 hover:shadow-lg">
+                        <div class="h-60 w-full bg-stone-200 relative">
+                            <iframe src="https://maps.google.com/maps?q=Revanfa+Jaya,+Jalan+Cemara+Gg.5,+Sragen&t=&z=15&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <div class="absolute top-4 right-4 bg-white/95 backdrop-blur text-stone-900 px-3 py-1.5 rounded-lg font-bold text-xs uppercase tracking-wider shadow-sm border border-stone-100">Kantor Utama</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h4 class="text-xl font-bold text-stone-900 mb-4 font-serif">Wisma Revanfa Jaya</h4>
+                            <div class="space-y-3 flex-grow mb-6">
+                                <div class="flex gap-3 items-start">
+                                    <i class="fas fa-map-marker-alt text-primary-500 mt-1"></i>
+                                    <a href="https://maps.app.goo.gl/TJ5UiNoZZGbZ3E4w6" target="_blank" class="text-stone-600 text-sm hover:text-primary-600 hover:underline transition-colors">Jalan Cemara Gg.5, Teguhjajar, Plumbungan, Karangmalang - Sragen</a>
+                                </div>
+                                <div class="flex gap-3 items-center"><i class="fas fa-phone-alt text-primary-500"></i><p class="text-stone-800 font-bold">0812 1509 4446</p></div>
+                            </div>
+                            <a href="https://wa.me/6281215094446" target="_blank" class="w-full flex items-center justify-center gap-2 py-3.5 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-colors shadow-md hover:shadow-lg"><i class="fab fa-whatsapp text-xl"></i> Chat Cabang Wisma</a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-[2rem] overflow-hidden border border-stone-200 flex flex-col shadow-sm transition-transform duration-500 hover:-translate-y-1 hover:shadow-lg">
+                        <div class="h-60 w-full bg-stone-200 relative">
+                            <iframe src="https://maps.google.com/maps?q=Shopping%20Center%20Sragen&t=&z=16&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <div class="absolute top-4 right-4 bg-white/95 backdrop-blur text-stone-900 px-3 py-1.5 rounded-lg font-bold text-xs uppercase tracking-wider shadow-sm border border-stone-100">Pusat Belanja</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h4 class="text-xl font-bold text-stone-900 mb-4 font-serif">Kios Pusat Belanja</h4>
+                            <div class="space-y-3 flex-grow mb-6">
+                                <div class="flex gap-3 items-start">
+                                    <i class="fas fa-map-marker-alt text-primary-500 mt-1"></i>
+                                    <a href="https://maps.app.goo.gl/k86DYcYKs6SBDVY9A?g_st=ac" target="_blank" class="text-stone-600 text-sm hover:text-primary-600 hover:underline transition-colors">Shopping Center Sragen<br>Lorong Timur, Utara Trowong</a>
+                                </div>
+                                <div class="flex gap-3 items-center"><i class="fas fa-phone-alt text-primary-500"></i><p class="text-stone-800 font-bold">0857 9958 7017</p></div>
+                            </div>
+                            <a href="https://wa.me/6285799587017" target="_blank" class="w-full flex items-center justify-center gap-2 py-3.5 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-colors shadow-md hover:shadow-lg"><i class="fab fa-whatsapp text-xl"></i> Chat Cabang Kios</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="relative bg-gradient-to-br from-[#7a1313] via-[#b01e1e] to-[#e33b3b] pt-14 pb-28 mt-auto rounded-t-[3rem] overflow-hidden shadow-[0_-10px_30px_rgba(176,30,30,0.15)] z-20">
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <div class="absolute -top-20 -left-10 w-80 h-80 bg-white/10 rounded-full blur-[60px]"></div>
+            <div class="absolute bottom-0 right-10 w-96 h-96 bg-black/10 rounded-full blur-[60px]"></div>
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDMiLz4KPC9zdmc+')] opacity-30"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-10">
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-12 h-12 rounded-full border-2 border-white/30 flex items-center justify-center bg-white/10 backdrop-blur-md shadow-inner text-white">
+                            <span class="font-serif font-bold text-lg">RF</span>
+                        </div>
+                        <div>
+                            <h5 class="font-serif text-2xl text-white font-bold leading-tight">Toko An Najah</h5>
+                            <p class="text-white/70 text-xs tracking-wider uppercase font-medium">Revanfa Jaya</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-white/80 leading-relaxed mb-6 max-w-sm">
+                        Pusat penyedia pakaian seragam sekolah dan kantor profesional di Sragen. Melayani pemesanan produk konfeksi dengan komitmen kualitas terbaik.
+                    </p>
+                    <div class="inline-flex items-center gap-2 bg-black/10 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-2">
+                        <i class="fas fa-star text-yellow-300 text-xs"></i>
+                        <p class="text-white/90 text-xs font-bold uppercase tracking-widest">Best Quality & Trusted</p>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-3">
+                    <h6 class="text-white font-bold mb-5 text-sm uppercase tracking-wider">Jelajahi</h6>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><button onclick="navigate('beranda')" class="text-white/70 hover:text-white hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Beranda</button></li>
+                        <li><button onclick="navigate('layanan')" class="text-white/70 hover:text-white hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Layanan</button></li>
+                        <li><button onclick="navigate('katalog')" class="text-white/70 hover:text-white hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Katalog Produk</button></li>
+                        <li><button onclick="navigate('tentang')" class="text-white/70 hover:text-white hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Profil Toko</button></li>
+                        <li><button onclick="navigate('lokasi')" class="text-white/70 hover:text-white hover:translate-x-1 transition-all flex items-center gap-2"><i class="fas fa-chevron-right text-[10px]"></i> Lokasi Cabang</button></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4">
+                    <h6 class="text-white font-bold mb-5 text-sm uppercase tracking-wider">Kontak Langsung</h6>
+                    <div class="space-y-4">
+                        <a href="https://wa.me/6281215094446" target="_blank" class="flex items-center gap-4 bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm p-3 rounded-xl border border-white/20 group">
+                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white group-hover:bg-green-500 transition-colors shadow-inner"><i class="fab fa-whatsapp text-lg"></i></div>
+                            <div>
+                                <p class="text-white/70 text-xs font-medium mb-0.5">Wisma Revanfa</p>
+                                <p class="text-white font-bold tracking-wide">0812 1509 4446</p>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/6285799587017" target="_blank" class="flex items-center gap-4 bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm p-3 rounded-xl border border-white/20 group">
+                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white group-hover:bg-green-500 transition-colors shadow-inner"><i class="fab fa-whatsapp text-lg"></i></div>
+                            <div>
+                                <p class="text-white/70 text-xs font-medium mb-0.5">Kios Shopping Center</p>
+                                <p class="text-white font-bold tracking-wide">0857 9958 7017</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-6 border-t border-white/20 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60 font-medium">
+                <p>© 2026 Toko An Najah Sragen. Hak Cipta Dilindungi.</p>
+                <p>Dibuat dengan <i class="fas fa-heart text-white mx-1"></i> di Indonesia</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="product-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm transition-opacity duration-300" onclick="closeModal()"></div>
+        
+        <div id="modal-box" class="relative bg-white rounded-[2rem] w-full max-w-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh] transform scale-95 opacity-0 transition-all duration-300">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-20 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-stone-800 hover:bg-red-500 hover:text-white transition-colors shadow-md">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <div class="overflow-y-auto custom-scrollbar flex-grow bg-white">
+                
+                <div class="relative w-full bg-stone-100 border-b border-stone-200">
+                    <img id="modal-img" src="" alt="Foto Produk" class="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity" onclick="openFullscreen()">
+                </div>
+                
+                <div class="p-5 sm:p-8">
+                    <h3 id="modal-title" class="text-2xl sm:text-3xl font-bold font-serif text-stone-900 mb-1">Nama Produk</h3>
+                    <p id="modal-subtitle" class="text-primary-600 font-semibold text-sm mb-6 pb-4 border-b border-stone-100">Kategori / Tagline</p>
+                    <div class="flex flex-col gap-8">
+                        <div>
+                            <h4 class="text-sm font-bold text-stone-800 uppercase tracking-widest mb-3 flex items-center gap-2"><i class="fas fa-info-circle text-primary-500"></i> Deskripsi Produk</h4>
+                            <p id="modal-desc" class="text-stone-600 text-sm mb-4 leading-relaxed"></p>
+                            <ul id="modal-features" class="space-y-2 text-sm text-stone-700 font-medium"></ul>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-stone-800 uppercase tracking-widest mb-3 flex items-center gap-2"><i class="fas fa-ruler-horizontal text-primary-500"></i> Panduan Ukuran (Standar)</h4>
+                            <div id="modal-table-container" class="overflow-x-auto rounded-xl border border-stone-200 shadow-sm custom-scrollbar"></div>
+                            <p class="text-[10px] text-stone-400 mt-2 italic">* Satuan (cm). Khusus untuk produk Aksesoris adalah ukuran All Size (Standar).</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="p-4 sm:px-8 sm:py-4 border-t border-stone-200 bg-stone-50 flex-shrink-0 z-10 shadow-[0_-10px_15px_rgba(0,0,0,0.03)]">
+                <a href="https://wa.me/6281215094446" target="_blank" class="w-full flex items-center justify-center gap-2 py-3.5 bg-stone-800 hover:bg-stone-900 text-white border border-stone-700 font-bold rounded-xl transition-all duration-300 ease-smooth shadow-lg hover:-translate-y-0.5">
+                    <i class="fab fa-whatsapp text-2xl text-green-400"></i> <span class="text-base sm:text-lg tracking-wide">Pesan via WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="fullscreen-viewer" class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/90 backdrop-blur-sm transition-opacity duration-300" onclick="closeFullscreen()">
+        <button onclick="closeFullscreen()" class="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors shadow-md z-10">
+            <i class="fas fa-times text-lg sm:text-2xl"></i>
+        </button>
+        <img id="fullscreen-img" src="" alt="Full Photo" class="max-w-[95vw] max-h-[95vh] object-contain transform scale-95 opacity-0 transition-all duration-300">
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
